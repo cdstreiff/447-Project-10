@@ -1,0 +1,352 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13525,        344]
+NotebookOptionsPosition[     12072,        315]
+NotebookOutlinePosition[     12476,        331]
+CellTagsIndexPosition[     12433,        328]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Project 10 Mathematica Assignment - Constructing addition and \
+multiplication tables of F_16",
+  FontWeight->"Bold"],
+ "\nWe need an irreducible mod 2 polynomial of degree 4. Here we will use X^4 \
++ x + 1. "
+}], "Text",
+ CellChangeTimes->{{3.876487614613654*^9, 3.876487649803084*^9}, {
+  3.876487898061165*^9, 
+  3.876487944960003*^9}},ExpressionUUID->"e40a6e40-d4ec-47b9-8bf8-\
+d5536667d92e"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"IrreduciblePolynomialQ", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"x", "^", "4"}], "+", "x", "+", "1"}], "}"}], ",", 
+   RowBox[{"Modulus", "->", "2"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8764334495928493`*^9, 3.876433459672411*^9}, {
+  3.876433501514863*^9, 3.876433509229165*^9}, {3.8764335499886303`*^9, 
+  3.876433641962207*^9}, {3.8764337746361303`*^9, 3.876433774967509*^9}, {
+  3.876433826624719*^9, 3.8764338489236*^9}, {3.8764338825918303`*^9, 
+  3.876433902123621*^9}},
+ CellLabel->"In[17]:=",ExpressionUUID->"9efefaf9-c036-419c-9cd5-c96d452c8a88"],
+
+Cell[BoxData[
+ RowBox[{"{", "True", "}"}]], "Output",
+ CellChangeTimes->{
+  3.8764335112167373`*^9, {3.8764335538280354`*^9, 3.8764336391115704`*^9}, 
+   3.87643377643629*^9, {3.8764338285761676`*^9, 3.876433851105054*^9}, {
+   3.876433894517476*^9, 3.8764339039289083`*^9}},
+ CellLabel->"Out[17]=",ExpressionUUID->"37afc2ff-d9e5-4b80-97fa-24000b06cdd1"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"addition", " ", "=", " ", 
+   RowBox[{"ConstantArray", "[", 
+    RowBox[{"0", ",", 
+     RowBox[{"{", 
+      RowBox[{"16", ",", "16"}], "}"}]}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.876436800257552*^9, 3.8764368145223794`*^9}, {
+   3.876441103620174*^9, 3.8764411061770735`*^9}, {3.8764412183116436`*^9, 
+   3.876441235900876*^9}, 3.87648729551388*^9},
+ CellLabel->
+  "In[105]:=",ExpressionUUID->"ddeb3caa-41f9-4c9c-8767-c381a143056d"],
+
+Cell["\<\
+Here is our function for generating the addition table for F_16. We can use \
+the bitwise XOR function to determine the sums.\
+\>", "Text",
+ CellChangeTimes->{{3.876487550059122*^9, 
+  3.8764875953907537`*^9}},ExpressionUUID->"49b749d4-4a0c-4b7c-9402-\
+50c8882ffc04"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "<=", "16"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"j", "=", "1"}], ",", 
+       RowBox[{"j", "<=", "16"}], ",", 
+       RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"addition", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "j", "]"}], "]"}], " ", "=", " ", 
+        RowBox[{"BitXor", "[", 
+         RowBox[{
+          RowBox[{"i", "-", "1"}], ",", 
+          RowBox[{"j", "-", "1"}]}], "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+     ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.8764412523573337`*^9, 3.8764412934408774`*^9}, {
+  3.8764413246322155`*^9, 3.8764414086858845`*^9}, {3.8764875293383627`*^9, 
+  3.8764875312744493`*^9}},
+ CellLabel->
+  "In[106]:=",ExpressionUUID->"58eb53b3-f903-440c-a60f-10fe0ce10038"],
+
+Cell[BoxData[
+ RowBox[{"addition", " ", "//", "MatrixForm"}]], "Input",
+ CellChangeTimes->{{3.876441416960333*^9, 3.876441432699082*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"7946cf15-73d7-4e33-a677-f83fbe3f4068"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", 
+      "13", "14", "15"},
+     {"1", "0", "3", "2", "5", "4", "7", "6", "9", "8", "11", "10", "13", 
+      "12", "15", "14"},
+     {"2", "3", "0", "1", "6", "7", "4", "5", "10", "11", "8", "9", "14", 
+      "15", "12", "13"},
+     {"3", "2", "1", "0", "7", "6", "5", "4", "11", "10", "9", "8", "15", 
+      "14", "13", "12"},
+     {"4", "5", "6", "7", "0", "1", "2", "3", "12", "13", "14", "15", "8", 
+      "9", "10", "11"},
+     {"5", "4", "7", "6", "1", "0", "3", "2", "13", "12", "15", "14", "9", 
+      "8", "11", "10"},
+     {"6", "7", "4", "5", "2", "3", "0", "1", "14", "15", "12", "13", "10", 
+      "11", "8", "9"},
+     {"7", "6", "5", "4", "3", "2", "1", "0", "15", "14", "13", "12", "11", 
+      "10", "9", "8"},
+     {"8", "9", "10", "11", "12", "13", "14", "15", "0", "1", "2", "3", "4", 
+      "5", "6", "7"},
+     {"9", "8", "11", "10", "13", "12", "15", "14", "1", "0", "3", "2", "5", 
+      "4", "7", "6"},
+     {"10", "11", "8", "9", "14", "15", "12", "13", "2", "3", "0", "1", "6", 
+      "7", "4", "5"},
+     {"11", "10", "9", "8", "15", "14", "13", "12", "3", "2", "1", "0", "7", 
+      "6", "5", "4"},
+     {"12", "13", "14", "15", "8", "9", "10", "11", "4", "5", "6", "7", "0", 
+      "1", "2", "3"},
+     {"13", "12", "15", "14", "9", "8", "11", "10", "5", "4", "7", "6", "1", 
+      "0", "3", "2"},
+     {"14", "15", "12", "13", "10", "11", "8", "9", "6", "7", "4", "5", "2", 
+      "3", "0", "1"},
+     {"15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", 
+      "2", "1", "0"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Input",
+ CellChangeTimes->{3.8764859288772917`*^9},
+ CellLabel->"In[37]:=",ExpressionUUID->"aec8f80f-b5ac-4a5b-8703-ef633220658b"],
+
+Cell["\<\
+For multiplication, we multiply the two parameters, then reduce mod X^4 + X + \
+1, and the coefficients mod 2\
+\>", "Text",
+ CellChangeTimes->{{3.87648766105019*^9, 3.8764876883473206`*^9}, {
+  3.8764877815435967`*^9, 
+  3.8764878067388105`*^9}},ExpressionUUID->"91115c3f-4edf-445d-ac89-\
+0159398d2a98"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"multiplication", " ", "=", " ", 
+   RowBox[{"ConstantArray", "[", 
+    RowBox[{"0", ",", 
+     RowBox[{"{", 
+      RowBox[{"16", ",", "16"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"polynomialArray", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "x", ",", 
+     RowBox[{"x", "+", "1"}], ",", 
+     RowBox[{"x", "^", "2"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", "x"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "2"}], "+", "x", "+", "1"}], ",", 
+     RowBox[{"x", "^", "3"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", "x"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", "x", "+", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", 
+      RowBox[{"x", "^", "2"}]}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", 
+      RowBox[{"x", "^", "2"}], "+", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", 
+      RowBox[{"x", "^", "2"}], "+", "x"}], ",", 
+     RowBox[{
+      RowBox[{"x", "^", "3"}], "+", 
+      RowBox[{"x", "^", "2"}], "+", "x", "+", "1"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "<=", "16"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"j", "=", "1"}], ",", 
+      RowBox[{"j", "<=", "16"}], ",", 
+      RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"multiplication", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "[", 
+        RowBox[{"[", "j", "]"}], "]"}], " ", "=", " ", 
+       RowBox[{"FromDigits", "[", 
+        RowBox[{
+         RowBox[{"Reverse", "[", 
+          RowBox[{"CoefficientList", "[", 
+           RowBox[{
+            RowBox[{"PolynomialMod", "[", 
+             RowBox[{
+              RowBox[{"PolynomialRemainder", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"polynomialArray", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], " ", "*", " ", 
+                 RowBox[{"polynomialArray", "[", 
+                  RowBox[{"[", "j", "]"}], "]"}]}], ",", 
+                RowBox[{
+                 RowBox[{"x", "^", "4"}], "+", "x", "+", "1"}], ",", "x"}], 
+               "]"}], ",", "2"}], "]"}], ",", "x"}], "]"}], "]"}], ",", "2"}],
+         "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"multiplication", "//", 
+  "MatrixForm"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.8764861194505663`*^9, 3.876486368834463*^9}, {
+  3.876486609725786*^9, 3.876486614487339*^9}, {3.876486776260736*^9, 
+  3.8764867981285777`*^9}, {3.876486894273336*^9, 3.8764868984864235`*^9}, {
+  3.8764871772488976`*^9, 3.8764871787212934`*^9}, {3.876487238307519*^9, 
+  3.8764872399203324`*^9}},
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"e1e07097-a4b7-45d1-a38f-83d82adb2896"],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", 
+      "0", "0"},
+     {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", 
+      "13", "14", "15"},
+     {"0", "2", "4", "6", "8", "10", "12", "14", "3", "1", "7", "5", "11", 
+      "9", "15", "13"},
+     {"0", "3", "6", "5", "12", "15", "10", "9", "11", "8", "13", "14", "7", 
+      "4", "1", "2"},
+     {"0", "4", "8", "12", "3", "7", "11", "15", "6", "2", "14", "10", "5", 
+      "1", "13", "9"},
+     {"0", "5", "10", "15", "7", "2", "13", "8", "14", "11", "4", "1", "9", 
+      "12", "3", "6"},
+     {"0", "6", "12", "10", "11", "13", "7", "1", "5", "3", "9", "15", "14", 
+      "8", "2", "4"},
+     {"0", "7", "14", "9", "15", "8", "1", "6", "13", "10", "3", "4", "2", 
+      "5", "12", "11"},
+     {"0", "8", "3", "11", "6", "14", "5", "13", "12", "4", "15", "7", "10", 
+      "2", "9", "1"},
+     {"0", "9", "1", "8", "2", "11", "3", "10", "4", "13", "5", "12", "6", 
+      "15", "7", "14"},
+     {"0", "10", "7", "13", "14", "4", "9", "3", "15", "5", "8", "2", "1", 
+      "11", "6", "12"},
+     {"0", "11", "5", "14", "10", "1", "15", "4", "7", "12", "2", "9", "13", 
+      "6", "8", "3"},
+     {"0", "12", "11", "7", "5", "9", "14", "2", "10", "6", "1", "13", "15", 
+      "3", "4", "8"},
+     {"0", "13", "9", "4", "1", "12", "8", "5", "2", "15", "11", "6", "3", 
+      "14", "10", "7"},
+     {"0", "14", "15", "1", "13", "3", "2", "12", "9", "7", "6", "8", "4", 
+      "10", "11", "5"},
+     {"0", "15", "13", "2", "9", "6", "4", "11", "1", "14", "12", "3", "8", 
+      "7", "5", "10"}
+    },
+    GridBoxAlignment->{"Columns" -> {{Center}}, "Rows" -> {{Baseline}}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.876487277071283*^9},
+ CellLabel->
+  "Out[103]//MatrixForm=",ExpressionUUID->"c484abe8-8829-4baa-b68b-\
+805859404aff"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.876488221494567*^9, 3.8764882641548796`*^9}, {
+  3.876488308688463*^9, 
+  3.876488312969954*^9}},ExpressionUUID->"c6d657ad-4c6e-4f4b-9987-\
+c7c0fb8da1f5"]
+},
+WindowSize->{1440., 747.75},
+WindowMargins->{{-6, Automatic}, {Automatic, 0}},
+FrontEndVersion->"13.1 for Microsoft Windows (64-bit) (August 22, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"9662e6d4-56b5-47f7-ac7a-0fd8dfae3d25"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 423, 10, 58, "Text",ExpressionUUID->"e40a6e40-d4ec-47b9-8bf8-d5536667d92e"],
+Cell[CellGroupData[{
+Cell[1006, 34, 607, 12, 28, "Input",ExpressionUUID->"9efefaf9-c036-419c-9cd5-c96d452c8a88"],
+Cell[1616, 48, 354, 6, 32, "Output",ExpressionUUID->"37afc2ff-d9e5-4b80-97fa-24000b06cdd1"]
+}, Open  ]],
+Cell[1985, 57, 481, 11, 28, "Input",ExpressionUUID->"ddeb3caa-41f9-4c9c-8767-c381a143056d"],
+Cell[2469, 70, 277, 6, 35, "Text",ExpressionUUID->"49b749d4-4a0c-4b7c-9402-50c8882ffc04"],
+Cell[2749, 78, 1036, 27, 105, "Input",ExpressionUUID->"58eb53b3-f903-440c-a60f-10fe0ce10038"],
+Cell[3788, 107, 216, 3, 28, "Input",ExpressionUUID->"7946cf15-73d7-4e33-a677-f83fbe3f4068"],
+Cell[4007, 112, 2170, 47, 284, "Input",ExpressionUUID->"aec8f80f-b5ac-4a5b-8703-ef633220658b"],
+Cell[6180, 161, 313, 7, 35, "Text",ExpressionUUID->"91115c3f-4edf-445d-ac89-0159398d2a98"],
+Cell[CellGroupData[{
+Cell[6518, 172, 3148, 83, 200, "Input",ExpressionUUID->"e1e07097-a4b7-45d1-a38f-83d82adb2896"],
+Cell[9669, 257, 2181, 49, 303, "Output",ExpressionUUID->"c484abe8-8829-4baa-b68b-805859404aff"]
+}, Open  ]],
+Cell[11865, 309, 203, 4, 28, "Input",ExpressionUUID->"c6d657ad-4c6e-4f4b-9987-c7c0fb8da1f5"]
+}
+]
+*)
+
